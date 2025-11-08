@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Soluções Digitais - Suporte de TI para Empresas</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Biblioteca de Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Typed.js (Efeito de Digitação) -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- Vanilla-Tilt.js (Efeito 3D nos Cards) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    
+    <!-- Configuração do Tailwind (mesma da versão anterior) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cyber': {
+                            DEFAULT: '#14B8A6', // teal-500
+                            '50': '#F0FDFA',
+                            '100': '#CCFBF1',
+                            '200': '#99F6E4',
+                            '300': '#5EEAD4',
+                            '400': '#2DD4BF',
+                            '500': '#14B8A6',
+                            '600': '#0D9488',
+                            '700': '#0F766E',
+                            '800': '#115E59',
+                            '900': '#134E4A',
+                            '950': '#042f2e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        /* Esta classe será adicionada pelo script de "Animação ao Rolar"
+         Manter os elementos ocultos ANTES do script rodar previne "flashes"
+        */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(2.5rem); /* 2.5rem = translate-y-10 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- 1. Header (Menu de Navegação) -->
+    <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo da Empresa -->
+            <a href="#" class="flex items-center space-x-2">
+                <img src="https://i.ibb.co/nN42wzF6/Whats-App-Image-2025-11-07-at-20-35-51.jpg" alt="Logo WR Soluções Digitais" class="h-10 w-10 rounded-full object-cover">
+                <span class="font-bold text-xl text-white">WR Soluções Digitais</span>
+            </a>
+            
+            <!-- Links de Navegação (Desktop) -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#servicos" class="text-gray-400 hover:text-cyber-400 transition-colors">Serviços</a>
+                <a href="#sobre" class="text-gray-400 hover:text-cyber-400 transition-colors">Sobre Nós</a>
+                <a href="#contato" class="text-gray-400 hover:text-cyber-400 transition-colors">Contato</a>
+                <a href="https://wa.me/5511999998888" target="_blank" rel="noopener noreferrer" 
+                   class="bg-cyber-500 hover:bg-cyber-600 text-white font-medium py-2 px-5 rounded-lg transition-transform transform hover:scale-105">
+                    Fale Conosco
+                </a>
+            </div>
+            
+            <!-- Botão de Menu (Mobile) -->
+            <button id="menu-btn" class="md:hidden text-gray-300">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+        
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 shadow-lg">
+            <a href="#servicos" class="block px-4 py-3 text-gray-300 hover:bg-gray-700">Serviços</a>
+            <a href="#sobre" class="block px-4 py-3 text-gray-300 hover:bg-gray-700">Sobre Nós</a>
+            <a href="#contato" class="block px-4 py-3 text-gray-300 hover:bg-gray-700">Contato</a>
+            <a href="https://wa.me/5511999998888" target="_blank" rel="noopener noreferrer" class="block px-4 py-4 bg-cyber-950 text-cyber-300 font-medium text-center">Fale Conosco</a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section (Apresentação Principal) -->
+    <main>
+        <section class="bg-gray-900 py-20 md:py-32">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+                    Sua empresa parou? 
+                    <!-- O span para o efeito de digitação -->
+                    <span id="typed-output" class="text-cyber-400">A gente resolve.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+                    O suporte técnico ágil e proativo que seu negócio precisa para não perder tempo nem dinheiro com problemas de TI.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="https://wa.me/5511999998888" target="_blank" rel="noopener noreferrer" 
+                       class="bg-cyber-500 hover:bg-cyber-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-lg">
+                        Falar com um Especialista
+                    </a>
+                    <a href="#servicos" 
+                       class="bg-transparent hover:bg-gray-800 text-gray-300 font-bold py-3 px-8 rounded-lg text-lg border-2 border-gray-600 transition-colors">
+                        Conhecer Serviços
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Seção de Serviços -->
+        <section id="servicos" class="bg-gray-800 py-16 md:py-24 animate-on-scroll">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">Nossas Soluções de TI</h2>
+                <p class="text-center text-gray-400 text-lg mt-4 mb-12">Focamos no que é essencial para sua empresa operar sem interrupções.</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card de Serviço 1 (com data-tilt) -->
+                    <div data-tilt class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700 transform hover:shadow-cyber-500/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyber-950 text-cyber-400 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="monitor-smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Suporte Técnico e Help Desk</h3>
+                        <p class="text-gray-400">Atendimento rápido e eficiente para resolver problemas de computadores, notebooks e dispositivos dos seus colaboradores.</p>
+                    </div>
+                    
+                    <!-- Card de Serviço 2 (com data-tilt) -->
+                    <div data-tilt class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700 transform hover:shadow-cyber-500/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyber-950 text-cyber-400 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Gestão e Monitoramento de Redes</h3>
+                        <p class="text-gray-400">Garantimos que sua rede (internet, Wi-Fi, servidores) esteja sempre online, segura e com o melhor desempenho.</p>
+                    </div>
+                    
+                    <!-- Card de Serviço 3 (com data-tilt) -->
+                    <div data-tilt class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700 transform hover:shadow-cyber-500/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyber-950 text-cyber-400 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="server" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Consultoria em Infraestrutura</h3>
+                        <p class="text-gray-400">Analisamos sua estrutura atual e planejamos upgrades (servidores, cloud, hardware) para otimizar custos e performance.</p>
+                    </div>
+                    
+                    <!-- Card de Serviço 4 (com data-tilt) -->
+                    <div data-tilt class="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700 transform hover:shadow-cyber-500/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyber-950 text-cyber-400 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Análise de Segurança</h3>
+                        <p class="text-gray-400">Protegemos seus dados contra ameaças com análise de vulnerabilidades, configuração de firewall e backup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Seção Sobre Nós -->
+        <section id="sobre" class="bg-gray-900 py-16 md:py-24 animate-on-scroll">
+            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://placehold.co/500x400/14B8A6/FFFFFF?text=WR+Soluções" alt="Equipe WR Soluções" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Sobre a WR Soluções</h2>
+                    <p class="text-lg text-gray-400 mt-4 leading-relaxed">
+                        Fundada por <span class="font-medium text-cyber-300">Raphael Ferrari</span> e <span class="font-medium text-cyber-300">Wallace Souza</span>, a WR Soluções Digitais nasceu da paixão por tecnologia e da frustração de ver empresas paradas por problemas de TI que poderiam ser evitados.
+                    </p>
+                    <p class="text-lg text-gray-400 mt-4 leading-relaxed">
+                        Nossa missão é simples: ser o departamento de TI que sua empresa confia, oferecendo um serviço proativo que não apenas "apaga incêndios", mas previne que eles aconteçam.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Seção de CTA (Chamada para Ação) -->
+        <section class="bg-cyber-600 text-white animate-on-scroll">
+            <div class="container mx-auto px-4 py-16 md:py-20 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Pronto para otimizar a TI da sua empresa?</h2>
+                <p class="text-lg text-cyber-100 mt-4 max-w-2xl mx-auto">Não deixe um problema técnico parar sua operação. Envie uma mensagem e receba uma análise inicial gratuita.</p>
+                <div class="mt-8">
+                    <a href="https://wa.me/5511999998888" target="_blank" rel="noopener noreferrer" 
+                       class="bg-white hover:bg-gray-100 text-cyber-700 font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-lg">
+                        Solicitar Orçamento via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. Rodapé -->
+    <footer id="contato" class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-3 gap-8">
+            <!-- Coluna 1: Logo e Descrição -->
+            <div>
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="https://i.ibb.co/nN42wzF6/Whats-App-Image-2025-11-07-at-20-35-51.jpg" alt="Logo WR Soluções Digitais" class="h-10 w-10 rounded-full object-cover">
+                    <span class="font-bold text-xl text-white">WR Soluções Digitais</span>
+                </a>
+                <p class="mt-4 text-gray-400">O suporte técnico que sua empresa precisa.</p>
+                <p class="text-sm text-gray-500 mt-6">&copy; 2025 WR Soluções Digitais. Todos os direitos reservados.</p>
+            </div>
+            
+            <!-- Coluna 2: Links Rápidos -->
+            <div>
+                <h4 class="font-semibold text-white text-lg mb-4">Navegação</h4>
+                <ul class="space-y-2">
+                    <li><a href="#servicos" class="hover:text-white transition-colors">Serviços</a></li>
+                    <li><a href="#sobre" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                    <li><a href="#contato" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            
+            <!-- Coluna 3: Contato -->
+            <div>
+                <h4 class="font-semibold text-white text-lg mb-4">Contatos</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-cyber-400"></i>
+                        <a href="mailto:contato@wrsolucoes.com.br" class="hover:text-white transition-colors">contato@wrsolucoes.com.br</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-cyber-400"></i>
+                        <a href="https://wa.me/5511999998888" target="_blank" class="hover:text-white transition-colors">(11) 99999-8888 (WhatsApp)</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="linkedin" class="w-5 h-5 text-cyber-400"></i>
+                        <a href="https://www.linkedin.com/in/raphael-ferrari-16b919199/" target="_blank" class="hover:text-white transition-colors">Raphael Ferrari</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="linkedin" class="w-5 h-5 text-cyber-400"></i>
+                        <a href="https://www.linkedin.com/in/wallace-souza-924b25298/" target="_blank" class="hover:text-white transition-colors">Wallace Souza</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+      SCRIPT DE INICIALIZAÇÃO SEGURO 
+      Garante que o DOM esteja pronto e que as bibliotecas existam
+      antes de tentar executá-las.
+    -->
+    <script>
+        // 1. Funções que podem rodar imediatamente
+        try {
+            lucide.createIcons();
+        } catch (e) {
+            console.error("Erro ao carregar ícones Lucide:", e);
+        }
+
+        try {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        } catch (e) {
+            console.error("Erro no script do menu mobile:", e);
+        }
+
+        // 2. Funções que DEVEM esperar o DOM estar pronto
+        document.addEventListener('DOMContentLoaded', (event) => {
+            
+            // --- Animação 1: Efeito de Digitação (Typed.js) ---
+            try {
+                if (typeof Typed !== 'undefined') {
+                    new Typed('#typed-output', {
+                        strings: ["A gente resolve.", "Nós protegemos.", "Nós otimizamos.", "Nós prevenimos."],
+                        typeSpeed: 50,
+                        backSpeed: 30,
+                        backDelay: 2000,
+                        loop: true,
+                        smartBackspace: true
+                    });
+                } else {
+                    console.warn('Typed.js não foi carregado. Efeito de digitação desabilitado.');
+                }
+            } catch (e) {
+                console.error('Erro ao iniciar o Typed.js:', e);
+                // Se falhar, o texto estático "A gente resolve." ainda estará lá.
+            }
+
+            // --- Animação 2: Efeito 3D "Tilt" (Vanilla-Tilt.js) ---
+            try {
+                if (typeof VanillaTilt !== 'undefined') {
+                    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+                        max: 15,
+                        speed: 400,
+                        glare: true,
+                        "max-glare": 0.3
+                    });
+                } else {
+                    console.warn('VanillaTilt não foi carregado. Efeito 3D desabilitado.');
+                }
+            } catch (e) {
+                console.error('Erro ao iniciar o VanillaTilt:', e);
+            }
+
+            // --- Animação 3: Efeito de Animação ao Rolar (Intersection Observer) ---
+            try {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('transition-all', 'duration-700', 'ease-out');
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Ação quando 10% do elemento está visível
+                });
+                
+                const elsToAnimate = document.querySelectorAll('.animate-on-scroll');
+                elsToAnimate.forEach(el => {
+                    observer.observe(el);
+                });
+            } catch (e) {
+                console.error('Erro ao iniciar o IntersectionObserver (animação de rolagem):', e);
+            }
+        });
+    </script>
+</body>
+</html>
